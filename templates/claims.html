@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block add_class %}add_claim{% endblock %}"
+
+{% block l_content %}
+    <span class="l_c_header">Claim</span>
+{% endblock %}
+
+{% block contents %}
+    {% for cl in data %}
+    <div class="c_list">
+        <div class="c_content"><a href="{{ url_for('replys',claim_id=cl.id) }}">{{ cl.heading }}</a></div>
+        <div class="c_footer">{{ cl.time }}&nbsp;&nbsp;&&nbsp;&nbsp;{{ cl.user_name }}</div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block r_content %}
+    <span class="r_c_header"> Newly posted</span>
+{% endblock %}

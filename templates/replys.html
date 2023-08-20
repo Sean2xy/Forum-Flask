@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block l_content %}
+    <span class="l_c_header">Claim</span>
+{% endblock %}
+
+{% block contents %}
+    <div class="c_list">
+        <div class="c_content" style="text-align: left;height: 256px;"><b>Text: </b>{{ claim_obj.heading }}</div>
+        <div class="c_footer">{{ claim_obj.time }}&nbsp;&nbsp;&&nbsp;&nbsp;{{ claim_obj.user_name }}</div>
+    </div>
+    {% if opposed_list %}
+    <div class="c_list">
+        <div class="c_content opposed" style="text-align: left"><b>Opposed: </b>
+            {% for span in opposed_list %}<span>{{ span.heading }}</span>{% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if equivalent_list %}
+    <div class="c_list">
+        <div class="c_content equivalent" style="text-align: left"><b>Equivalent: </b>
+            {% for span in equivalent_list %}<span>{{ span.heading }}</span>{% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="c_list">
+    {% for reply in reply_list %}
+        <div class="reply">
+            <div class="c_content" style="text-align: left;{{ reply.index }}">
+                <b class="reply_b">Reply:
+                    <img class="reply_to_reply" attr-id="{{ reply.id }}" src="/static/imgs/reply.png" />
+                </b>{{ reply.content }}
+                {% if reply.claim %}
+                <span class="claim_to">{{ reply.claim }}</span>
+                {% else %}
+                <span class="reply_to">{{ reply.reply }}</span>
+                {% endif %}
+            </div>
+            <div class="c_footer">{{ reply.time }}&nbsp;&nbsp;&&nbsp;&nbsp;{{ reply.user_name }}</div>
+        </div>
+        <hr>
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block page %}
+    <div class="page">
+        <a class="add_reply_claim" href="javascript:;" style="padding: 10px 25%;">Post reply to the claim.</a>
+    </div>
+{% endblock %}
+
+{% block r_content %}
+    <!--<span class="r_c_header"> Newly posted</span>-->
+
+{% endblock %}

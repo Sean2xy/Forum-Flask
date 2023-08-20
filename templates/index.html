@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block l_content %}
+    <span class="l_c_header">Topic</span>
+{% endblock %}
+
+{% block contents %}
+    {% for cl in data %}
+    <div class="c_list">
+        <div class="c_content"><a href="{{ url_for('claim',claim_id=cl.id) }}">{{ cl.title }}</a></div>
+        <div class="c_footer">{{ cl.time }}&nbsp;&nbsp;&&nbsp;&nbsp;{{ cl.user_name }}</div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block r_content %}
+    <!--<span class="r_c_header"> Newly posted</span>-->
+
+{% endblock %}
